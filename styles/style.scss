@@ -1,0 +1,357 @@
+// Start The Global Styles
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main-color: #202c33;
+  --main-border: 1px solid white;
+  --small-text-color: #8696a0;
+}
+body {
+  background-color: var(--main-color);
+  color: white;
+  overflow: hidden;
+  user-select: none;
+}
+
+// Start More Icon
+.more-icon {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+
+  &::before,
+  &::after {
+    content: "";
+    position: relative;
+    @extend .more-icon;
+  }
+  &::before {
+    top: -1px;
+  }
+  &::after {
+    top: -10px;
+  }
+}
+// End More Icon
+// Satrt The Back Icon
+.back-icon {
+  width: 5px;
+  height: 25px;
+  margin: 0 20px;
+  background-color: white;
+  position: relative;
+  transform: rotate(90deg) translatey(6px);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg) translatey(6px);
+  -ms-transform: rotate(90deg) translatey(6px);
+  -o-transform: rotate(90deg) translatey(6px);
+
+  @media (min-width: 760px) {
+    & {
+      display: none;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: 15px;
+    background-color: inherit;
+  }
+  &::before {
+    transform: rotate(120deg) translateX(10px);
+    -webkit-transform: rotate(120deg) translate(13px, -2px);
+    -moz-transform: rotate(120deg) translateX(10px);
+    -ms-transform: rotate(120deg) translateX(10px);
+    -o-transform: rotate(120deg) translateX(10px);
+  }
+
+  &::after {
+    transform: rotate(55deg) translateX(9px);
+    -webkit-transform: rotate(55deg) translate(12px, 2px);
+    -moz-transform: rotate(55deg) translateX(9px);
+    -ms-transform: rotate(55deg) translateX(9px);
+    -o-transform: rotate(55deg) translateX(9px);
+  }
+}
+// End The Back Icon
+
+// End The Global Styles
+
+// Start The Header
+header {
+  display: flex;
+  border-bottom: var(--main-border);
+  height: 80px;
+
+  @media (min-width: 1440px) {
+    & {
+      width: 1440px;
+      margin: auto;
+      border: var(--main-border);
+    }
+  }
+
+  .friends-header {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+
+    @media (max-width: 760px) {
+      & {
+        width: 100%;
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      margin-left: 10px;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+    }
+    ul {
+      display: flex;
+      list-style-type: none;
+
+      li {
+        padding: 0 10px;
+      }
+    }
+  }
+  .chat-header {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-left: var(--main-border);
+
+    @media (max-width: 760px) {
+      & {
+        width: 100%;
+      }
+    }
+
+    // User Info
+    .user-info-box {
+      width: 100%;
+      display: flex;
+      cursor: pointer;
+
+      // User Img
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+      }
+      .user-info {
+        margin-left: 20px;
+        padding-top: 10px;
+        width: 80%;
+
+        p:last-child {
+          color: var(--small-text-color);
+        }
+      }
+    }
+    .tools {
+      width: 20%;
+      display: flex;
+      gap: 30px;
+    }
+  }
+}
+// End The Header
+// Start The Container
+.container {
+  height: 100vh;
+  display: flex;
+
+  @media (min-width: 1440px) {
+    & {
+      width: 1440px;
+      margin: auto;
+    }
+  }
+
+  // The Friends Section
+  .friends {
+    width: 40%;
+    height: calc(100% - 80px);
+    border-right: var(--main-border);
+    overflow-y: scroll;
+
+    @media (max-width: 760px) {
+      & {
+        width: 100%;
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+
+    form {
+      position: relative;
+
+      i {
+        position: absolute;
+        top: 17px;
+        left: 25px;
+      }
+      input {
+        width: calc(100% - 30px);
+        height: 35px;
+        padding-left: 40px;
+        margin: 10px 15px;
+        background-color: rgb(128 128 128 / 34%);
+        color: lightgray;
+        border: none;
+        outline: none;
+        border-radius: 7px;
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        -ms-border-radius: 7px;
+        -o-border-radius: 7px;
+      }
+    }
+    // Friend Chat
+    .friend-chat {
+      display: flex;
+      border-bottom: var(--main-border);
+      padding: 10px 5px;
+      cursor: pointer;
+      position: relative;
+
+      &:hover {
+        background-color: #2a394269;
+      }
+
+      &.active {
+        background-color: #2a3942;
+
+        span {
+          color: #00a884 !important;
+        }
+      }
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+      }
+      // The User Name And The Last Massage
+      .name-lastMassage {
+        padding-left: 15px;
+
+        p:nth-child(2) {
+          font-size: 15px;
+          opacity: 0.7;
+        }
+        span {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          color: var(--small-text-color);
+        }
+      }
+    }
+  }
+
+  // The Chat Section
+  .chat {
+    width: 60%;
+    height: calc(100% - 80px);
+
+    @media (max-width: 760px) {
+      & {
+        width: 100%;
+      }
+    }
+
+    .chat-area {
+      height: 85%;
+      padding: 20px;
+      overflow-y: scroll;
+
+      .friend,
+      .me {
+        clear: both;
+        max-width: 49%;
+        width: fit-content;
+        margin-bottom: 20px;
+        padding: 7px 35px;
+        word-break: break-all;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+      }
+      .me {
+        float: right;
+        background-color: #00a884;
+      }
+      .friend {
+        float: left;
+        background-color: var(--small-text-color);
+      }
+    }
+    form {
+      height: 15%;
+      padding: 15px 10px;
+      display: flex;
+      align-items: center;
+      background-color: #8696a042;
+
+      input {
+        width: calc(100% - 30px);
+        height: 90%;
+        height: 35px;
+        padding-left: 40px;
+        margin: 10px 15px;
+        background-color: rgba(128, 128, 128, 0.34);
+        color: white;
+        border: none;
+        outline: none;
+        border-radius: 7px;
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        -ms-border-radius: 7px;
+        -o-border-radius: 7px;
+      }
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+// End The Container
